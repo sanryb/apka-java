@@ -3,6 +3,7 @@ package pl.karpik.todoapp.service;
 import org.springframework.stereotype.Service;
 import pl.karpik.todoapp.model.Todo;
 import pl.karpik.todoapp.repository.TodoRepository;
+import pl.karpik.todoapp.model.User;
 
 
 import java.util.List;
@@ -67,6 +68,14 @@ public class TodoService {
         todo.setTitle(newTitle);
         todoRepository.save(todo);
 
+    }
+
+    public List<Todo> findByUser(User user) {
+        return todoRepository.findAll()
+                .stream()
+                .filter(todo -> todo.getUser() != null
+                        && todo.getUser().getId().equals(user.getId()))
+                .toList();
     }
 
 }

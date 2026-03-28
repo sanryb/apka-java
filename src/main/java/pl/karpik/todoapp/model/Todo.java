@@ -2,6 +2,8 @@ package pl.karpik.todoapp.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.persistence.ManyToOne;
+import pl.karpik.todoapp.model.User;
 
 @Entity
 public class Todo {
@@ -53,6 +55,16 @@ public class Todo {
         {
             this.deadline = deadline;
         }
+
+        @ManyToOne
+    private User user;
+
+   public User getUser(){
+       return user;
+   }
+   public void setUser(User user){
+       this.user = user;
+   }
 
 
     }
