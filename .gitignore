@@ -2,3 +2,6 @@ target/
 .idea/
 *.iml
 files*
+
+frontend/generated/
+target/
